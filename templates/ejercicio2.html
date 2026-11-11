@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %}Ejercicio 2 - Comparación de nombres{% endblock %}
+
+{% block content %}
+
+<section class="tarjeta">
+    <h2>Ejercicio 2: Comparación de nombres</h2>
+
+    <p>Ingresa tres nombres diferentes para identificar cuál tiene más caracteres.</p>
+
+    <form method="POST" action="{{ url_for('ejercicio2') }}">
+
+        <label for="nombre1">Primer nombre:</label>
+        <input type="text" id="nombre1" name="nombre1" required>
+
+        <label for="nombre2">Segundo nombre:</label>
+        <input type="text" id="nombre2" name="nombre2" required>
+
+        <label for="nombre3">Tercer nombre:</label>
+        <input type="text" id="nombre3" name="nombre3" required>
+
+        <button type="submit">Comparar nombres</button>
+
+    </form>
+
+    {% if error %}
+        <div class="resultado">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    {% if nombre_mayor is defined %}
+        <div class="resultado">
+            <h3>Resultado de la comparación</h3>
+
+            <p>Nombre con más caracteres: {{ nombre_mayor }}</p>
+            <p>Cantidad de caracteres: {{ cantidad_caracteres }}</p>
+        </div>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="boton-volver">Volver al menú principal</a>
+
+</section>
+
+{% endblock %}

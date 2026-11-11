@@ -1,0 +1,52 @@
+
+{% extends "base.html" %}
+
+{% block title %}Ejercicio 1 - Notas y asistencia{% endblock %}
+
+{% block content %}
+
+<section class="tarjeta">
+    <h2>Ejercicio 1: Notas y asistencia</h2>
+
+    <p>Ingresa las tres notas y el porcentaje de asistencia del estudiante.</p>
+
+    <form method="POST" action="{{ url_for('ejercicio1') }}">
+
+        <label for="nota1">Primera nota (10 a 70):</label>
+        <input type="number" id="nota1" name="nota1" min="10" max="70" required>
+
+        <label for="nota2">Segunda nota (10 a 70):</label>
+        <input type="number" id="nota2" name="nota2" min="10" max="70" required>
+
+        <label for="nota3">Tercera nota (10 a 70):</label>
+        <input type="number" id="nota3" name="nota3" min="10" max="70" required>
+
+        <label for="asistencia">Asistencia (0 a 100%):</label>
+        <input type="number" id="asistencia" name="asistencia" min="0" max="100" required>
+
+        <button type="submit">Calcular resultado</button>
+
+    </form>
+
+    {% if error %}
+        <div class="resultado">
+            <p>{{ error }}</p>
+        </div>
+    {% endif %}
+
+    {% if promedio is defined %}
+        <div class="resultado">
+            <h3>Resultado del estudiante</h3>
+
+            <p>Promedio: {{ promedio }}</p>
+            <p>Asistencia: {{ asistencia }}%</p>
+
+            <h3>{{ resultado }}</h3>
+        </div>
+    {% endif %}
+
+    <a href="{{ url_for('index') }}" class="boton-volver">Volver al menú principal</a>
+
+</section>
+
+{% endblock %}

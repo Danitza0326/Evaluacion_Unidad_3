@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Menú Principal - Evaluación Unidad 3{% endblock %}
+
+{% block content %}
+
+<section class="tarjeta">
+    <h2>Evaluación Unidad 3</h2>
+
+    <p>Selecciona el ejercicio que deseas realizar:</p>
+
+    <div class="botones">
+        <a href="{{ url_for('ejercicio1') }}" class="boton">
+            Ejercicio 1: Notas y asistencia
+        </a>
+
+        <a href="{{ url_for('ejercicio2') }}" class="boton">
+            Ejercicio 2: Comparación de nombres
+        </a>
+    </div>
+</section>
+
+{% endblock %}
